@@ -1,0 +1,83 @@
+:root{--bg:#f6f3ec;--card:#fff;--ink:#14213a;--mute:#5d6678;--navy:#1d3557;--accent:#b8532f;--line:#e2ddd0;--soft:#ece7da}
+@media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0f1a2b;--card:#16243a;--ink:#eef0f4;--mute:#9aa6bb;--navy:#e8ecf3;--accent:#e58a63;--line:#26364f;--soft:#1a2a42}}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{padding-top:env(safe-area-inset-top,0)}
+html{scroll-behavior:smooth;height:100%}
+body{font:16px/1.7 "Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100%;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0);background:var(--bg);z-index:60}
+h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.08}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+[hidden]{display:none!important}
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-weight:800;text-decoration:none;letter-spacing:-.02em}
+.menu{display:flex;gap:22px;list-style:none}
+.menu a{text-decoration:none;font-size:.9rem;font-weight:500;color:var(--mute);padding:6px 0;border-bottom:2px solid transparent}
+.menu a:hover{color:var(--ink)}
+.menu a[aria-current]{color:var(--ink);border-color:var(--accent)}
+@media(max-width:640px){.nav .wrap{height:auto;flex-direction:column;gap:2px;padding:10px 12px 4px}.menu{gap:16px;width:100%;overflow-x:auto;justify-content:center}.menu a{font-size:.84rem;white-space:nowrap}}
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;padding:72px 0 80px}
+.eyebrow{font-size:.8rem;font-weight:700;color:var(--accent);margin-bottom:12px}
+.hero h1{font-size:clamp(2.6rem,8vw,4.6rem);margin-bottom:16px}
+.lead{color:var(--mute);font-size:1.1rem;max-width:34ch;margin-bottom:28px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{padding:12px 24px;border-radius:10px;background:var(--navy);color:var(--bg);text-decoration:none;font-weight:700;font-size:.92rem;border:1px solid var(--navy)}
+.btn:hover{opacity:.88}
+.btn.ghost{background:none;color:var(--ink);border-color:var(--line)}
+.pf{position:relative;width:clamp(230px,34vw,340px)}
+.avatar{width:100%;aspect-ratio:1;border-radius:50%;object-fit:cover;object-position:50% 38%;display:block;border:6px solid var(--card);box-shadow:0 0 0 1px var(--line),0 20px 44px rgba(20,33,58,.16);background:var(--soft)}
+@media(max-width:760px){.hero{grid-template-columns:1fr;gap:32px;padding:40px 0 56px;text-align:center}.pf{order:-1;margin:0 auto}.lead{margin-left:auto;margin-right:auto}.btns{justify-content:center}}
+/* SECTION */
+.page-head{padding:0 0 22px}
+.page-head h2{font-size:clamp(2rem,6vw,2.8rem)}
+.page-head p{color:var(--mute);margin-top:10px}
+.sec{padding:56px 24px 72px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;text-decoration:none}
+a.card:hover{border-color:var(--navy)}
+.card small{color:var(--accent);font-weight:700;font-size:.78rem}
+.card h3{font-size:1.25rem;margin:4px 0}
+.card p{color:var(--mute);font-size:.92rem}
+.em{position:absolute;font-size:clamp(1.7rem,5vw,2.4rem);line-height:1;animation:bob 3.6s ease-in-out infinite alternate}
+.e1{top:2%;left:2%}.e2{top:6%;right:0;animation-delay:-1.2s}.e3{bottom:4%;right:2%;animation-delay:-2.4s}.e4{bottom:6%;left:0;animation-delay:-.6s}
+@keyframes bob{to{transform:translateY(-7px) rotate(7deg)}}
+/* TENTANG */
+.about{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+.about .pf{width:clamp(200px,28vw,280px)}
+.about .big{font-size:1.4rem;font-weight:600;line-height:1.5;letter-spacing:-.01em;margin-bottom:26px}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.dl div{border-top:1px solid var(--line);padding-top:10px}
+.dl dt{font-size:.74rem;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.dl dd{font-weight:600}
+@media(max-width:760px){.about{grid-template-columns:1fr;gap:28px;justify-items:center;text-align:center}.dl{text-align:left;width:100%}}
+/* SEKOLAH */
+.tl{list-style:none;counter-reset:n;position:relative;padding-left:48px}
+.tl::before{content:"";position:absolute;left:15px;top:14px;bottom:14px;width:2px;background:var(--line)}
+.tl li{position:relative;padding-bottom:16px;counter-increment:n}
+.tl li::before{content:counter(n);position:absolute;left:-48px;top:12px;width:32px;height:32px;border-radius:50%;background:var(--card);border:2px solid var(--line);display:grid;place-items:center;font-size:.82rem;font-weight:700;color:var(--mute)}
+.tl li.now::before{background:var(--accent);border-color:var(--accent);color:#fff}
+.tl .card h3{font-size:1.4rem}
+.tag{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.08em}
+.now-badge{margin-left:8px;padding:2px 10px;border-radius:99px;background:var(--soft);font-size:.72rem;font-weight:700}
+/* GALERI */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.grid button{padding:0;border:0;border-radius:14px;overflow:hidden;cursor:zoom-in;background:var(--soft);aspect-ratio:1}
+.grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.grid button:hover img{transform:scale(1.04)}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(10,16,28,.92);display:none;place-items:center;padding:20px;cursor:zoom-out}
+.lb.on{display:grid}
+.lb img{max-width:100%;max-height:82vh;border-radius:12px}
+.lb p{color:#fff;text-align:center;margin-top:10px}
+/* KONTAK */
+.contact{display:grid;gap:10px;max-width:480px}
+.contact a,.contact div{display:flex;justify-content:space-between;gap:16px;padding:16px 20px;border:1px solid var(--line);border-radius:14px;background:var(--card);text-decoration:none}
+.contact a:hover{border-color:var(--navy)}
+.contact b{color:var(--accent)}
+.foot{border-top:1px solid var(--line);padding:30px 0 calc(30px + env(safe-area-inset-bottom,0));text-align:center;color:var(--mute);font-size:.88rem}
+.foot b{display:block;color:var(--ink)}
+.rv{opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none}}
